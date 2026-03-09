@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Launcher foreground: battery body with server stack lines inside.
+    Designed for adaptive icon (108x108dp safe zone = 72dp centered).
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Battery outline -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+            M38,28
+            L38,24 C38,22.9 38.9,22 40,22
+            L46,22 C47.1,22 48,22.9 48,24
+            L48,28
+            L60,28
+            L60,24 C60,22.9 60.9,22 62,22
+            L68,22 C69.1,22 70,22.9 70,24
+            L70,28
+            C72.2,28 74,29.8 74,32
+            L74,82
+            C74,84.2 72.2,86 70,86
+            L38,86
+            C35.8,86 34,84.2 34,82
+            L34,32
+            C34,29.8 35.8,28 38,28 Z
+            M38,32
+            L38,82
+            L70,82
+            L70,32 Z" />
+
+    <!-- Server stack line 1 (top) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M42,42 L66,42 C67.1,42 68,42.9 68,44 L68,50 C68,51.1 67.1,52 66,52 L42,52 C40.9,52 40,51.1 40,50 L40,44 C40,42.9 40.9,42 42,42 Z" />
+    <!-- Server stack line 1 dot -->
+    <path
+        android:fillColor="#0D47A1"
+        android:pathData="M63,44.5 A2,2 0 1 1 63,48.5 A2,2 0 1 1 63,44.5 Z" />
+
+    <!-- Server stack line 2 (middle) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M42,56 L66,56 C67.1,56 68,56.9 68,58 L68,64 C68,65.1 67.1,66 66,66 L42,66 C40.9,66 40,65.1 40,64 L40,58 C40,56.9 40.9,56 42,56 Z" />
+    <!-- Server stack line 2 dot -->
+    <path
+        android:fillColor="#0D47A1"
+        android:pathData="M63,58.5 A2,2 0 1 1 63,62.5 A2,2 0 1 1 63,58.5 Z" />
+
+    <!-- Battery level fill (bottom third, accent green) -->
+    <path
+        android:fillColor="#69F0AE"
+        android:pathData="M38,70 L70,70 L70,82 L38,82 Z" />
+
+</vector>
