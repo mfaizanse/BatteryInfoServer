@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Network: allow HTTP server to bind and accept connections -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Network state: detect WiFi signal and data connection type -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- Wake lock: keep CPU awake so the HTTP server keeps responding -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Boot receiver: auto-start service after device reboot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Foreground service: required for long-running background service on API 26+ -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <!-- Required for API 34+ when using foregroundServiceType="specialUse" -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BatteryInfoServer">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Foreground Service running the HTTP server; specialUse is the correct type
+             when the service doesn't fit any of the typed categories (camera, location, etc.) -->
+        <service
+            android:name=".BatteryInfoService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <!-- Required property when using foregroundServiceType="specialUse" -->
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="HTTP server exposing battery and device diagnostics on port 9091" />
+        </service>
+
+        <!-- Boot receiver: starts the service automatically after reboot -->
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <!-- Fires after full boot + user unlock -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <!-- Fires after boot even if device is still locked (Direct Boot mode) -->
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

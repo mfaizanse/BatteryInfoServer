@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Battery Info Server</string>
+    <string name="start_server">Start Server</string>
+    <string name="stop_server">Stop Server</string>
+    <string name="status_running">Status: Running on port 9091</string>
+    <string name="status_stopped">Status: Stopped</string>
+    <string name="port_info">HTTP endpoint: http://&lt;ip&gt;:9091/battery</string>
+</resources>
